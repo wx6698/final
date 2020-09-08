@@ -15,7 +15,7 @@ pipeline {
          }
          stage('Lint HTML') {
               steps {
-                  sh 'aws s3 cp s3://udacity-demo-1/udacity.zip .'
+                  sh 'aws s3 cp s3://udacity-final/* . --recursive '
               }
          }
      }
