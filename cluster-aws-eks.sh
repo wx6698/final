@@ -20,7 +20,7 @@ for template in cloudformation/*.yml; do
 done
 
 # Check ansible playbooks for correctness.
-playbooks="main.yml deploy.yml delete.yml"
+playbooks="main.yml delete.yml"
 echo "Checking playbook syntax..."
 ansible-playbook -i inventory $playbooks --syntax-check
 echo "Linting playbooks with ansible-lint..."
