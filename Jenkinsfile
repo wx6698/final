@@ -21,7 +21,7 @@ pipeline {
                   sh '''
                      echo "Validating Dockerfile and app python file..."
                      hadolint Dockerfile
-                     pylint --disable=R,C,W1203 app.py
+                     #pylint --disable=R,C,W1203 app.py
                      # validate Dockerfile and app.py
                      echo "Validating CloudFormation templates..."
                      for template in cloudformation/*.yml; do
