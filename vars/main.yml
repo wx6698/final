@@ -17,7 +17,7 @@ eks_cluster_name: eks-final
 eks_kubernetes_version: "1.17"
 
 # Nodegroup settings.
-eks_nodegroup_name: eks-blue-nodegroup
+eks_nodegroup_name: eks-final-nodegroup
 eks_nodegroup_instance_type: t3.medium
 eks_nodegroup_cluster_size: 3
 
