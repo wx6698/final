@@ -25,10 +25,6 @@ Parameters:
   Subnets:
     Type: "List<AWS::EC2::Subnet::Id>"
     Description: The subnets where workers can be created.
-  
-  EnvironmentName:
-    Type: String
-    Default: final-green
 
 Resources:
 
