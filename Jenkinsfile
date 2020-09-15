@@ -16,7 +16,7 @@ pipeline {
                 }
              }
          }
-         stage('Lint HTML') {
+         stage('Lint') {
               steps {
                   sh '''
                      echo "Validating Dockerfile and app python file..."
@@ -38,14 +38,40 @@ pipeline {
                      '''
               }
          }
-         stage('Deploy EKS cluster') {
+         stage('Build blue container') {
               steps {
-                  sh  'ansible-playbook -i inventory main.yml'
+                  sh  '''
+                    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 164754508673.dkr.ecr.us-east-1.amazonaws.com
+                    docker build -t test .
+                    '''
               } 
          }
-         stage('Deploy Docker to EKS') {
+         stage('Push blue container') {
               steps {
-                  sh  './deploy.sh'
+                  sh  '''
+                     docker tag test:latest 164754508673.dkr.ecr.us-east-1.amazonaws.com/test:latest
+                     docker push 164754508673.dkr.ecr.us-east-1.amazonaws.com/test:latest
+                     '''
+              } 
+         }
+         stage('Creat K8s config') {
+              steps {
+                  sh  'aws eks --region us-east-1 update-kubeconfig --name eks-final'
+              } 
+         }
+         stage('Deploy blue container') {
+              steps {
+                  sh  'kubectl apply -f ./blue-controller.json'
+              } 
+         }
+         stage('Redirect service to blue container) {
+              steps {
+                  sh  'kubectl apply -f ./blue-green-service.json'
+              } 
+         }
+         stage('display ILB') {
+              steps {
+                  sh  'kubectl get services'
               } 
          }
      }

@@ -5,13 +5,7 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=project4
-
-# Step 2:  
-# Authenticate & tag
-docker login --username=wx6698
-echo "Docker ID and Image: $dockerpath"
-docker tag project4 wx6698/project4:latest
-# Step 3:
-# Push image to a docker repository
-docker push wx6698/project4:latest
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 164754508673.dkr.ecr.us-east-1.amazonaws.com
+docker build -t test .
+docker tag test:latest 164754508673.dkr.ecr.us-east-1.amazonaws.com/test:latest
+docker push 164754508673.dkr.ecr.us-east-1.amazonaws.com/test:latest
