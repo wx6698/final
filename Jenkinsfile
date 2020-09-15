@@ -41,12 +41,12 @@ pipeline {
          }
          stage('Deploy EKS cluster') {
               steps {
-                  'ansible-playbook -i inventory main.yml'
+                  sh  'ansible-playbook -i inventory main.yml'
               } 
          }
          stage('Deploy Docker to EKS') {
               steps {
-                  './deploy.sh'
+                  sh  './deploy.sh'
               } 
          }
      }
