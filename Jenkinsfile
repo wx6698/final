@@ -64,7 +64,7 @@ pipeline {
                   sh  'kubectl apply -f ./blue-controller.json'
               } 
          }
-         stage('Redirect service to blue container) {
+         stage('Redirect service to blue container') {
               steps {
                   sh  'kubectl apply -f ./blue-green-service.json'
               } 
