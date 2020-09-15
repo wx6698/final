@@ -12,7 +12,7 @@ aws_profile: default
 stack_outputs: {}
 
 # EKS Cluster settings.
-eks_cluster_name: eks-blue
+eks_cluster_name: eks-final
 # See: https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html
 eks_kubernetes_version: "1.17"
 
