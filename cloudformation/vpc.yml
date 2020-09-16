@@ -3,11 +3,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: VPC and network configuration for an EKS cluster.
 
 Parameters:
-  
-  EnvironmentName:
-    Type: String
-    Default: final-green
-  
+
   Region:
     Type: String
     Default: us-east-1

@@ -20,11 +20,6 @@ Parameters:
     Type: String
     Description: EKS Kubernetes cluster version.
 
-  EnvironmentName:
-    Description: An environment name that will be prefixed to resource names
-    Type: String
-    Default: final
-
 
 Resources:
 
