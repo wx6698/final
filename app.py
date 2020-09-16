@@ -9,7 +9,6 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 LOG = create_logger(app)
 LOG.setLevel(logging.INFO)
-You cannot catch me
 def scale(payload):
     """Scales Payload"""
     
