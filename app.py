@@ -17,7 +17,7 @@ def scale(payload):
     scaler = StandardScaler().fit(payload.astype(float))
     scaled_adhoc_predict = scaler.transform(payload.astype(float))
     return scaled_adhoc_predict
-
+you cannot catch me
 @app.route("/")
 def home():
     html = "<h3>Xin green home</h3>"
