@@ -67,7 +67,13 @@ pipeline {
          }
          stage('Deploy blue container') {
               steps {
-                  sh  'kubectl apply -f ./blue-controller.yaml'
+                 sh  '''
+                    if  kubectl get deployments | grep "green"
+                    then
+                        kubectl delete deployment green
+                    fi
+                    kubectl apply -f ./blue-controller.yaml
+                    '''
               } 
          }
          stage('Redirect service to blue container') {
