@@ -68,8 +68,9 @@ pipeline {
          stage('Deploy green container') {
               steps {
                   sh  '''
-                    if [ kubectl get deployments | grep "blue" ]
+                    if [ kubectl get deployments | grep "blue" ] then
                         kubectl delete deployment blue
+                    fi
                     kubectl apply -f ./green-controller.yaml
                     '''
               } 
