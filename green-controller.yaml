@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: green
-        image: 164754508673.dkr.ecr.us-east-1.amazonaws.com/test
+        image: 164754508673.dkr.ecr.us-east-1.amazonaws.com/prod
         ports:
         - containerPort: 80
