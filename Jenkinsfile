@@ -67,7 +67,7 @@ pipeline {
          }
          stage('Deploy green container') {
               steps {
-                  sh  'kubectl apply -f ./green-controller.json'
+                  sh  'kubectl apply -f ./green-controller.yaml'
               } 
          }
          stage('Redirect service to green container') {
