@@ -39,6 +39,11 @@ pipeline {
                      '''
               }
          }
+         stage('Deploy EKS cluster') {
+              steps {
+                  sh  'ansible-playbook -i inventory main.yml'
+              } 
+         }
          stage('Build blue container') {
               steps {
                   sh  '''
